@@ -1,0 +1,43 @@
+<h1>Eat-Da-Burger!</h1>
+
+<h2>Burgers to be eaten!</h2>
+
+
+  {{#each burgers}}
+    {{#if devoured}}
+    {{else}}
+      {{name}} 
+    {{/if}}
+  {{/each}}
+
+
+<h2>Burgers that have been devoured!</h2>
+
+  {{#each burgers}}
+    {{#if devoured}}
+          {{name}}
+    {{/if}}
+  {{/each}}
+
+
+<h2>Order a Burger</h2>
+
+<form class="create-form">
+    <input type="text" id="ca"> 
+    <button type="submit">Add Burger</button>
+</form>
+
+<script>
+  $(".create-form").on("submit", function(event){
+    event.preventDefault()
+    var burgerName = $("#ca").val()
+    console.log(burgerName)
+    $.post("/add",{name:burgerName},function(data){
+      console.log(data)
+      location.reload()
+    })
+  })
+
+  // make a event listerner that listens to the devour button and is able to determine the id of the burger related to the button that was hit is
+// add a button here that has an id of the burger as an attribute of the html giphy 9
+</script>
