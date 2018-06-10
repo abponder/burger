@@ -16,11 +16,11 @@ router.post ("/add", function(req,res){
   });
 });
 
-router.put("/update", function(req,res){
+//router.put("/update", function(req,res){
 
   
 
-});
+//});
 
 
 
