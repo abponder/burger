@@ -16,11 +16,13 @@ router.post ("/add", function(req,res){
   });
 });
 
-//router.put("/update", function(req,res){
-
-  
-
-//});
+router.patch("/devour/:id", function(req,res){
+  var id = req.params.id
+  console.log(id);
+  orm.updateOne(id, function(results){
+    res.send(results)
+  })
+});
 
 
 

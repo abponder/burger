@@ -16,9 +16,9 @@ var orm = {
         cb(results)
       })
     },
-    updateOne:function(aaa,cb){
+    updateOne:function(id,cb){
       console.log("what")
-      connection.query("", function(error, results){
+      connection.query("UPDATE burgers SET devoured = true WHERE ?",[{id:id}], function(error, results){
         //console.log(error)
         //console.log(results)
         cb(results)

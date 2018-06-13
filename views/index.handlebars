@@ -6,7 +6,9 @@
   {{#each burgers}}
     {{#if devoured}}
     {{else}}
-      {{name}} 
+    <p> {{name}} 
+        <button info="{{id}}" class="devour">Devour</button>
+    </p>
     {{/if}}
   {{/each}}
 
@@ -15,7 +17,7 @@
 
   {{#each burgers}}
     {{#if devoured}}
-          {{name}}
+     <p>{{name}}</p>
     {{/if}}
   {{/each}}
 
@@ -28,6 +30,7 @@
 </form>
 
 <script>
+
   $(".create-form").on("submit", function(event){
     event.preventDefault()
     var burgerName = $("#ca").val()
@@ -38,6 +41,17 @@
     })
   })
 
-  // make a event listerner that listens to the devour button and is able to determine the id of the burger related to the button that was hit is
-// add a button here that has an id of the burger as an attribute of the html giphy 9
+$(".devour").on("click", function() {
+  var id = $(this).attr("info")
+  
+
+  $.ajax("devour/" + id, {
+    type:"PATCH"
+  }).then(function(data){
+    console.log(data)
+    location.reload()
+  })
+})
+
+
 </script>
